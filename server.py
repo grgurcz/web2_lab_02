@@ -12,13 +12,14 @@ from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 csrf = CSRFProtect(app)
-login_manager = LoginManager()
-login_manager.init_app(app)
 
 app.config.update(
     SECRET_KEY="random_secret_key",
     WTF_CSRF_CHECK_DEFAULT=False
 )
+
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 CSRF_PROTECTED = False
 
