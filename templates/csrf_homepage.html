@@ -1,0 +1,29 @@
+<h2>Logged in as {{username}}</h2>
+<a href="/logout">logout</a>
+
+<br><br>
+<h3>Balance: ${{balance}}</h3>
+
+{% if protected %}
+<h4>CSRF protection enabled</h4>
+<a href="/toggle_csrf_protected">Turn off</a>
+{% elif not protected %}
+<h4>CSRF protection disabled</h4> <a href="/toggle_csrf_protected">Turn on</a>
+{% endif %}
+<form action="/csrf_homepage" method="POST" autocomplete="off">
+    <h3>Transfer Money</h3>
+    <label for="account">User ID</label>
+    <input type="text" name="account" placeholder="accountid">
+    <label for="amount">Amount to send</label>
+    <input type="number" name="amount" placeholder="amount">
+    <input type="submit" value="send">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+</form>
+<br><br>
+<h3>All users' balances (for reference):</h3>
+{% for user in all_users %}
+<h4>Username: {{user.username}}</h4>
+<h4>User ID: {{user.id}}</h4>
+<h4>Balance: ${{user.account_balance}}</h4>
+<br>
+{% endfor %}

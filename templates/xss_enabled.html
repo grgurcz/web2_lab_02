@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+{% autoescape false %}
+  <head>
+    <meta charset="utf-8">
+    <title>XSS example</title>
+  </head>
+
+  <body>
+    <a href="/">HOMEPAGE</a>
+    <h1>XSS vulnerability</h1>
+    <h3>
+        Example of Cross Site Scripting (XSS). In this example, a few comments are preloaded into memory and displayed below.
+        One of the comments is injected with javascript which sends an alert to the browser when run.
+        Here, the content of the website is not autoescaped, so the javascript code inside one of the comments runs and sends an alert to the browser.
+    </h3>
+    <a href="/xss_disabled">DISABLE XSS</a>
+    <h2>LIST OF ALL COMMENTS</h2>
+    {% for comment in comments %}
+        <ul>
+            <li>{{ comment }}</li>
+        </ul>
+    {% endfor %}
+    </body>
+{% endautoescape %}
+</html>

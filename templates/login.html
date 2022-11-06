@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>lab02</title>
+    </head>
+    <body>
+        <h1>CSRF example</h1>
+        <h3>Log in here</h3>
+        <form action='/login' method='POST' autocomplete="off">
+            <input type='text' name='username' id='email' placeholder='username'/>
+            <input type='password' name='password' id='password' placeholder='password'/>
+            <input type='submit' name='submit' value='login'/>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        </form>
+    </body>
+</html>
