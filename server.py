@@ -12,8 +12,7 @@ from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 app.config.update(
-    DEBUG=True,
-    SECRET_KEY="random_secret_key",
+    SECRET_KEY="random_secret_key"
 )
 
 login_manager = LoginManager()
