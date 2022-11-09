@@ -8,10 +8,13 @@ from flask_login import (
     logout_user,
 )
 from flask_wtf.csrf import CSRFProtect
+from flask_cors import CORS, cross_origin
 
 
 app = Flask(__name__)
 csrf = CSRFProtect(app)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 app.config.update(
     SECRET_KEY="random_secret_key",
@@ -120,6 +123,7 @@ def login():
 
 @app.route("/csrf_homepage", methods=["GET", "POST"])
 @login_required
+@cross_origin()
 def csrf_homepage():
     if CSRF_PROTECTED:
         csrf.protect()
