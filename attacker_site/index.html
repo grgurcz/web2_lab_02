@@ -23,8 +23,8 @@
 
         <script>
             const alert = "An attack attempt was just made.\
-                If CSRF protection is disabled, refresh your app to check your new account balance. \
-                If CSRF protection is enabled, open your console to see an error because the attack was blocked.";
+                If CSRF protection is disabled, refresh the app to check your new account balance. \
+                If CSRF protection is enabled, open the console in this tab to see an error because the attack was blocked.";
             function perform_csrf_attack() {
                 document.getElementById("attack").submit();
                 document.getElementById("alert").innerHTML= alert;
