@@ -6,10 +6,10 @@
 <h3>Balance: ${{balance}}</h3>
 
 {% if protected %}
-<h4>CSRF protection enabled</h4>
+<h4 style="color: green;">CSRF protection enabled</h4>
 <a href="/toggle_csrf_protected">Turn off</a>
 {% elif not protected %}
-<h4>CSRF protection disabled</h4> <a href="/toggle_csrf_protected">Turn on</a>
+<h4 style="color: red;">CSRF protection disabled</h4> <a href="/toggle_csrf_protected">Turn on</a>
 {% endif %}
 <form action="/csrf_homepage" method="POST" autocomplete="off">
     <h3>Transfer Money</h3>
